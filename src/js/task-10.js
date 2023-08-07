@@ -29,11 +29,17 @@ const clickButton = () => {
 createButton.addEventListener("click", clickButton);
 
 const createBoxes = (amount) => {
-  let el;
   for (let i = 0; i < Number(amount); i += 1) {
     let firstSize = 30 + i * 10;
-    el = `<div style="width: ${firstSize}px; height: ${firstSize}px; background-color: ${getRandomHexColor()}"></div>`;
+    divEl.insertAdjacentHTML(
+      "beforeend",
+      `<div style="width: ${firstSize}px; height: ${firstSize}px; background-color: ${getRandomHexColor()}"></div>`
+    );
   }
-  // el = `<div style="width: ${firstSize}px; height: ${firstSize}px; background-color: ${getRandomHexColor()}"></div>`;
-  divEl.insertAdjacentHTML("beforeend", el);
 };
+
+const clear = () => {
+  divEl.innerHTML = "";
+};
+
+destroyButton.addEventListener("click", clear);
